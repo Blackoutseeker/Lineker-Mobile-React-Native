@@ -1,0 +1,33 @@
+{
+  "expo": {
+    "name": "Lineker",
+    "slug": "Lineker",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/Lineker.png",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#005884"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "package": "com.FelipsTudio.lineker",
+      "versionCode": 1,
+      "adaptiveIcon": {
+        "backgroundColor": "#005884"
+      }
+    },
+    "entryPoint": "node_modules/expo/AppEntry.js"
+  },
+  "displayName": "Lineker",
+  "name": "Lineker"
+}
