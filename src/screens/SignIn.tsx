@@ -167,7 +167,7 @@ const SignIn: FC = () => {
                 </IconContent>
                 <Input placeholder={'Password'} placeholderTextColor={'#fff'} selectionColor={'#fff'}
                   keyboardType={'default'} autoCapitalize={'none'} secureTextEntry value={password}
-                  onChangeText={value => changeText(value, 'password')}onSubmitEditing={signIn} />
+                  onChangeText={value => changeText(value, 'password')} onSubmitEditing={signIn} />
               </InputContent>
             : <RuleText>The password must be 6 or more characters</RuleText>
           }

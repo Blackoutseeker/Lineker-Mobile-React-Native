@@ -12,6 +12,7 @@ import {
 } from './styles'
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
 import firebase from '../../../utils/Firebase'
+import { decodeFromDatabase, encodeForDatabase } from '../../../shared/DatabaseCodification'
 
 interface propsTemplate {
   currentFilter: string;
@@ -21,28 +22,31 @@ interface propsTemplate {
 
 const FilterItem: FC<propsTemplate> = (props) => {
 
-  const { currentFilter, filter, userId } = props
+  const { userId, filter, currentFilter } = props
+  const filterDecoded = decodeFromDatabase(filter!)
+  const filterEncoded = encodeForDatabase(filter!)
+  const currentFilterEncoded = encodeForDatabase(currentFilter!)
   const dispatch = useDispatch()
   const navigation = useNavigation()
 
   const reduceText = useCallback((): string => {
-    return filter.length < 22 ? filter : filter.slice(0, 22) + '...'
+    return filterDecoded.length < 22 ? filterDecoded : filterDecoded.slice(0, 22) + '...'
   }, [])
 
   const setCurrentFilter = useCallback((): void => {
     if(currentFilter !== filter) {
-      dispatch<currentFilterActionTemplate>({type: 'SET_FILTER', payload: {setFilter: filter}})
+      dispatch<currentFilterActionTemplate>({type: 'SET_FILTER', payload: {setFilter: filterEncoded}})
       navigation.navigate('Main')
     }
   }, [currentFilter])
 
   const deleteFilter = useCallback(async() => {
-    await firebase.database().ref(`users/${userId}/filters/${filter}`).remove()
-    await firebase.database().ref(`users/${userId}/links/${filter}`).remove()
+    await firebase.database().ref(`users/${userId}/filters/${filterEncoded}`).remove()
+    await firebase.database().ref(`users/${userId}/links/${filterEncoded}`).remove()
     dispatch<currentFilterActionTemplate>({type: 'SET_FILTER', payload: {setFilter: 'Default'}})
   }, [])
 
-  if(currentFilter === filter) {
+  if(currentFilterEncoded === filter) {
     return (
       <TintItemContent>
         <TouchableNativeFeedback background={TouchableNativeFeedback.Ripple('rgba(255, 255, 255, 0.3)', true)}

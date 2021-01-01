@@ -8,18 +8,25 @@ import {
 } from './styles'
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
 
-const FilterHeader: FC = () => {
+interface propsTemplate {
+  loading: boolean
+}
 
+const FilterHeader: FC<propsTemplate> = (props) => {
+
+  const { loading } = props
   const navigation = useNavigation()
 
   const navigateToFilters = (): void => {
-    navigation.navigate('Filters')
+    if(!loading) {
+      navigation.navigate('Filters')
+    }
   }
 
   return (
     <FilterContent>
       <TouchableNativeFeedback background={TouchableNativeFeedback.Ripple('rgba(255, 255, 255, 0.3)', false)}
-      onPress={() => {navigateToFilters()}} >
+      onPress={navigateToFilters} >
         <FilterButton>
           <FilterText>Filters</FilterText>
           <FontAwesome5 name={'filter'} color={'#fff'} size={16} />

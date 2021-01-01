@@ -7,7 +7,8 @@ import {
   Linking,
   Clipboard,
   ToastAndroid,
-  TouchableNativeFeedback
+  TouchableNativeFeedback,
+  TouchableOpacity
 } from 'react-native'
 import {
   ExpandedContent,
@@ -21,7 +22,6 @@ import {
 import QrCode from 'react-native-qrcode-svg'
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
 import firebase from '../../../utils/Firebase'
-import { TouchableOpacity } from 'react-native-gesture-handler'
 
 interface propsTemplate extends LinkData {
   userId: string;

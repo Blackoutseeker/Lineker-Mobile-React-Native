@@ -21,6 +21,7 @@ import LinkModal from '../components/main/modal/index'
 import QrModal from '../components/main/qrModal/index'
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
 import firebase from '../utils/Firebase'
+import { encodeForDatabase } from '../shared/DatabaseCodification'
 
 const Main: FC = () => {
   FontAwesome5.loadFont
@@ -32,7 +33,8 @@ const Main: FC = () => {
   const shadow = { elevation: 10 }
   const { colors, theme } = useContext<DefaultTheme>(ThemeContext)
   const { userId } = useSelector((state: rootReducerTemplate) => state.userInfo)
-  const currentFilter = useSelector((state: rootReducerTemplate) => state.currentFilter)
+  let currentFilter = useSelector((state: rootReducerTemplate) => state.currentFilter)
+  currentFilter = encodeForDatabase(currentFilter)
   const links = useSelector((state: rootReducerTemplate) => state.links)
   const dispatch = useDispatch()
   const databaseRef = firebase.database().ref(`users/${userId}`)
@@ -107,7 +109,7 @@ const Main: FC = () => {
           : <SearchHeader shadow={shadow} searchingState={searching} changeSearchingState={setSearching}
             searchState={searchValue} changeSearchState={setSearchValue} theme={theme} />
         }
-        <FilterHeader />
+        <FilterHeader loading={loading} />
         {filteredData
           ? <ListContent>
               <FlatList data={filteredData.reverse()} maxToRenderPerBatch={10} refreshing={loading} onRefresh={refresh}

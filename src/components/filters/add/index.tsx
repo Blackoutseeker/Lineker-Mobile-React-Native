@@ -5,6 +5,7 @@ import { currentFilterActionTemplate } from '../../../store/reducers/CurrentFilt
 import { Button } from './styles'
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
 import firebase from '../../../utils/Firebase'
+import { encodeForDatabase } from '../../../shared/DatabaseCodification'
 
 interface propsTemplate {
   modalState: boolean;
@@ -56,8 +57,8 @@ const AddButton: FC<propsTemplate> = (props) => {
 
   const addFilter = useCallback(async() => {
     if(verify() && filterState !== '') {
-      await firebase.database().ref(`users/${userId}/filters/${filterState}`).set({
-        filter: filterState
+      await firebase.database().ref(`users/${userId}/filters/${encodeForDatabase(filterState!)}`).set({
+        filter: encodeForDatabase(filterState!)
       })
       .then(() => {
         dispatch<currentFilterActionTemplate>({type: 'SET_FILTER', payload: {setFilter: filterState!}})

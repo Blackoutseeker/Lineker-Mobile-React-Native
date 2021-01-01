@@ -68,19 +68,19 @@ const CustomDrawer: FC = () => {
         </EmailContent>
       </DrawerHeader>
       <DrawerItemContent>
-        <ItemContent activeOpacity={0.7} onPress={() => {changeTheme()}} >
+        <ItemContent activeOpacity={0.7} onPress={changeTheme} >
           <IconContent>
             <FontAwesome5 name={theme === 'dark' ? 'sun' : 'moon'} solid color={'#fff'} size={20} />
           </IconContent>
           <ItemText>Switch Theme</ItemText>
         </ItemContent>
-        <ItemContent activeOpacity={0.7} onPress={() => {openDesktopLink()}} >
+        <ItemContent activeOpacity={0.7} onPress={openDesktopLink} >
           <IconContent>
             <FontAwesome5 name={'desktop'} color={'#fff'} size={20} />
           </IconContent>
           <ItemText>Get to desktop</ItemText>
         </ItemContent>
-        <ItemContent activeOpacity={0.7} onPress={() => {signOut()}} >
+        <ItemContent activeOpacity={0.7} onPress={signOut} >
           <IconContent>
             <FontAwesome5 name={'sign-out-alt'} color={'#fff'} size={20} style={{transform: [{ rotate: '180deg' }]}} />
           </IconContent>

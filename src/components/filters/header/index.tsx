@@ -19,7 +19,7 @@ const Header: FC = () => {
   return (
     <HeaderContent>
       <TouchableNativeFeedback background={TouchableNativeFeedback.Ripple('rgba(255, 255, 255, 0.3)', true, 30)}
-      onPress={() => {navigateToMain()}}>
+      onPress={navigateToMain}>
         <IconContent>
           <FontAwesome5 name={'arrow-left'} color={'#fff'} size={20} />
         </IconContent>
