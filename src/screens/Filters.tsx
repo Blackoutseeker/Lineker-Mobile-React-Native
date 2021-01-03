@@ -41,6 +41,9 @@ const Filters: FC = () => {
       setData(null)
       databaseRef.off('value')
       databaseRef.off('child_removed')
+      BackHandler.removeEventListener('hardwareBackPress', () => {
+        return true
+      })
     })
   }, [])
 

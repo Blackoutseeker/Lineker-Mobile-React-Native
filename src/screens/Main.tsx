@@ -56,6 +56,9 @@ const Main: FC = () => {
       setData(null)
       setLoading(false)
       databaseRef.off('value')
+      BackHandler.removeEventListener('hardwareBackPress', () => {
+        return false
+      })
     })
   }, [currentFilter, userId])
 
