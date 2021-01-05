@@ -16,6 +16,8 @@
 
 > **Note**: It's recommended to use this mobile app with the desktop app for a better experience. Click [here](https://github.com/Blackoutseeker/Lineker-desktop) to learn more about **Lineker-desktop**
 
+#### See all the features of this application in the [User Manual](https://github.com/Blackoutseeker/Lineker-mobile/blob/main/User%20Manual.pptx?raw=true)
+
 <br>
 
 ## Platforms
