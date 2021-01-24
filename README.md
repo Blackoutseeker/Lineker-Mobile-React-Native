@@ -65,7 +65,7 @@
 
 <img src="https://user-images.githubusercontent.com/56811005/85485907-0ca8b800-b5a0-11ea-96b1-dd6ad670c7ac.png" width="250" />
 
-### Tecnologies
+### Technologies
 
 <img src="https://user-images.githubusercontent.com/56811005/103469719-0feae080-4d47-11eb-9384-ad9cb47cb0ac.png" width="700" >
 
